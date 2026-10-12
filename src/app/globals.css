@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #133A5E; /* Navy from image */
+  
+  --color-ivory: #F4EDD2; /* Beige/Ivory from image */
+  --color-navy: #133A5E; /* Navy from image */
+  --color-saffron: #F3CA55; /* Gold/Saffron from image */
+  --color-orange: #F29A51; /* Orange from image */
+  --color-terracotta: #F0553A; /* Red-Orange/Terracotta from image */
+  --color-slate: #667085;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --color-ivory: var(--color-ivory);
+  --color-navy: var(--color-navy);
+  --color-saffron: var(--color-saffron);
+  --color-orange: var(--color-orange);
+  --color-terracotta: var(--color-terracotta);
+  --color-slate: var(--color-slate);
+
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* For a truly distinct look, could be darker, but preserving original intent if needed */
+    --background: #0a0a0a;
+    --foreground: #F8F6F0;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  @apply antialiased;
+}
+
+/* Animations and Base Styles */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
