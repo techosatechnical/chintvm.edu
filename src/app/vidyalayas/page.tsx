@@ -1,29 +1,215 @@
 import PageHeader from "@/components/shared/PageHeader";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, GraduationCap, Compass, Heart, Globe, ExternalLink } from "lucide-react";
+
+const SCHOOLS = [
+  {
+    name: "Chinmaya Vidyalaya, Attukal",
+    campus: "Trivandrum City Campus",
+    img: "/images/schools/chinmaya attukal.jpg",
+    link: "https://att.chintvm.edu.in/",
+    location: "Attukal, Thiruvananthapuram",
+    affiliation: "Affiliated to CBSE · Holistic Chinmaya Vision Programme"
+  },
+  {
+    name: "Chinmaya Vidyalaya, Kattakada",
+    campus: "Kattakada Regional Campus",
+    img: "/images/schools/chinmaya kattakada.jpg",
+    link: "https://kda.chintvm.edu.in/",
+    location: "Kattakada, Thiruvananthapuram",
+    affiliation: "Affiliated to CBSE · Holistic Chinmaya Vision Programme"
+  },
+  {
+    name: "Chinmaya Vidyalaya, Kollam",
+    campus: "Kollam District Campus",
+    img: "/images/schools/chinmaya kollam.jpg",
+    link: "https://kol.chintvm.edu.in/",
+    location: "Kollam District",
+    affiliation: "Affiliated to CBSE · Holistic Chinmaya Vision Programme"
+  },
+  {
+    name: "Chinmaya Vidyalaya, Kunnumpuram",
+    campus: "Kunnumpuram Campus",
+    img: "/images/schools/chinmaya kunnumpuram.jpg",
+    link: "https://kpm.chintvm.edu.in/",
+    location: "Kunnumpuram, Thiruvananthapuram",
+    affiliation: "Affiliated to CBSE · Holistic Chinmaya Vision Programme"
+  },
+  {
+    name: "Chinmaya Vidyalaya, Naruvamoodu",
+    campus: "Naruvamoodu Regional Campus",
+    img: "/images/schools/chinmaya naruvamood.jpg",
+    link: "https://nmd.chintvm.edu.in/",
+    location: "Naruvamoodu, Thiruvananthapuram",
+    affiliation: "Affiliated to CBSE · Holistic Chinmaya Vision Programme"
+  },
+  {
+    name: "Chinmaya Vidyalaya, Vazhuthacaud",
+    campus: "Vazhuthacaud City Campus",
+    img: "/images/schools/chinmaya vazhutakad.jpg",
+    link: "https://vkd.chintvm.edu.in/",
+    location: "Vazhuthacaud, Thiruvananthapuram",
+    affiliation: "Affiliated to CBSE · Holistic Chinmaya Vision Programme"
+  }
+];
+
+const CVP_PILLARS = [
+  {
+    icon: GraduationCap,
+    title: "Integrated Development",
+    desc: "Nurturing the physical, mental, intellectual, and spiritual dimensions of each learner."
+  },
+  {
+    icon: Compass,
+    title: "Indian Culture & Heritage",
+    desc: "Instilling deep respect and knowledge for cultural traditions, values, and timeless philosophy."
+  },
+  {
+    icon: Heart,
+    title: "Patriotism & Service",
+    desc: "Fostering national pride, civic duties, selfless service, and character development."
+  },
+  {
+    icon: Globe,
+    title: "Universal Outlook",
+    desc: "Developing global citizenship, environmental stewardship, and a peaceful worldview."
+  }
+];
 
 export default function VidyalayasPage() {
-  const schools = [
-    { name: "Chinmaya Vidyalaya, Attukal", link: "https://att.chintvm.edu.in/" },
-    { name: "Chinmaya Vidyalaya, Kattakada", link: "https://kda.chintvm.edu.in/" },
-    { name: "Chinmaya Vidyalaya, Kollam", link: "https://kol.chintvm.edu.in/" },
-    { name: "Chinmaya Vidyalaya, Kunnumpuram", link: "https://kpm.chintvm.edu.in/" },
-    { name: "Chinmaya Vidyalaya, Naruvamoodu", link: "https://nmd.chintvm.edu.in/" },
-    { name: "Chinmaya Vidyalaya, Vazhuthacaud", link: "https://vkd.chintvm.edu.in/" }
-  ];
-
   return (
     <>
-      <PageHeader title="Our Vidyalayas" description="Six institutions dedicated to academic excellence and spiritual growth." />
-      <div className="container mx-auto px-4 md:px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {schools.map((school, index) => (
-                <a key={index} href={school.link} target="_blank" rel="noopener noreferrer" className="bg-ivory border border-slate/10 p-8 rounded-2xl hover:border-terracotta hover:shadow-lg transition-all group block">
-                    <h3 className="font-heading text-xl font-bold text-navy mb-4 group-hover:text-terracotta transition-colors">{school.name}</h3>
-                    <div className="flex items-center text-terracotta font-medium">Visit Website <ArrowRight className="w-4 h-4 ml-2" /></div>
+      <PageHeader
+        title="Our Vidyalayas"
+        description="Six premier institutions dedicated to academic excellence, cultural values, and holistic development."
+      />
+
+      <section className="py-16 md:py-24 bg-gradient-to-b from-[#FBF9F4] via-[#F6EFE2] to-[#FAF6ED] relative overflow-hidden">
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          {/* Section Heading */}
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-4 py-1.5 bg-navy/10 text-navy text-xs font-bold tracking-widest uppercase rounded-full mb-4 border border-navy/15">
+              Centers of Excellence
+            </span>
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-navy mb-4 tracking-tight">
+              Our <span className="text-[#C85A17]">Institutions</span>
+            </h2>
+            <p className="text-slate-600 font-medium text-base md:text-lg max-w-2xl mx-auto">
+              Six prestigious Chinmaya Vidyalayas nurturing academic brilliance, moral fortitude, and cultural values across Kerala.
+            </p>
+            <div className="w-20 h-1 bg-[#C85A17] mx-auto rounded-full mt-6"></div>
+          </div>
+
+          {/* School Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-20">
+            {SCHOOLS.map((school, index) => (
+              <div key={index}>
+                <a
+                  href={school.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex flex-col bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl border border-slate-200/80 transition-all duration-300 hover:-translate-y-2 h-full"
+                >
+                  {/* Image container */}
+                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={school.img}
+                      alt={school.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
+                    <span className="absolute top-3 left-3 bg-[#0B2545]/85 backdrop-blur-md text-[#F3CA55] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-[#F3CA55]/30">
+                      {school.campus}
+                    </span>
+                  </div>
+
+                  {/* Body Content */}
+                  <div className="p-6 flex flex-col grow justify-between bg-white">
+                    <div>
+                      <h3 className="font-heading font-bold text-xl text-navy group-hover:text-[#C85A17] transition-colors leading-snug">
+                        {school.name}
+                      </h3>
+                      <p className="text-xs text-slate-500 mt-2 font-medium">
+                        {school.affiliation}
+                      </p>
+                    </div>
+
+                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy group-hover:text-[#C85A17] transition-colors">
+                      <span className="uppercase tracking-wider">Explore Campus Website</span>
+                      <span className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-[#C85A17] group-hover:text-white flex items-center justify-center transition-all duration-300">
+                        <ArrowRight className="w-4 h-4" />
+                      </span>
+                    </div>
+                  </div>
                 </a>
+              </div>
             ))}
+          </div>
+
+          {/* Chinmaya Vision Programme Feature Grid */}
+          <div className="max-w-6xl mx-auto pt-12 border-t border-amber-900/10">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="inline-block px-3.5 py-1 bg-[#C85A17]/10 text-[#C85A17] text-xs font-bold uppercase tracking-wider rounded-full mb-3">
+                Educational Philosophy
+              </span>
+              <h3 className="font-heading text-3xl md:text-4xl font-extrabold text-navy">
+                The Chinmaya Vision Programme
+              </h3>
+              <p className="text-slate-600 text-sm mt-3">
+                Our educational framework prepares students to face life's challenges with confidence, compass, and cultural roots.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {CVP_PILLARS.map((pillar, idx) => {
+                const IconComponent = pillar.icon;
+                return (
+                  <div
+                    key={idx}
+                    className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-navy text-saffron flex items-center justify-center mb-4 shadow-sm">
+                      <IconComponent className="w-6 h-6" />
+                    </div>
+                    <h4 className="font-heading font-bold text-lg text-navy mb-2">
+                      {pillar.title}
+                    </h4>
+                    <p className="text-slate-600 text-xs leading-relaxed">
+                      {pillar.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Admission / Contact Banner */}
+            <div className="mt-14 bg-gradient-to-r from-[#0B2545] via-[#133A5E] to-[#0D2F54] rounded-3xl p-8 md:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+              <div>
+                <span className="text-saffron text-xs font-bold uppercase tracking-widest">
+                  Admissions & Enquiries
+                </span>
+                <h4 className="font-heading text-2xl md:text-3xl font-bold mt-1 text-ivory">
+                  Begin Your Child's Journey with Us
+                </h4>
+                <p className="text-ivory/80 text-sm mt-2 max-w-xl">
+                  For admissions, academic queries, or campus visits, contact the respective Vidyalaya campus or reach out to our registered Trust office.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4 shrink-0">
+                <Link
+                  href="/contact"
+                  className="bg-terracotta hover:bg-[#D45D25] text-white font-bold px-6 py-3 rounded-xl transition-colors shadow-md hover:shadow-lg text-sm"
+                >
+                  Contact Trust Office
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
     </>
   );
 }
