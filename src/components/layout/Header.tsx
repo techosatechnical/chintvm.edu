@@ -8,7 +8,15 @@ import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openMobileDropdowns, setOpenMobileDropdowns] = useState<Record<string, boolean>>({});
   const pathname = usePathname();
+
+  const toggleMobileDropdown = (name: string) => {
+    setOpenMobileDropdowns((prev) => ({
+      ...prev,
+      [name]: !prev[name],
+    }));
+  };
 
   const navLinks: Array<{
     name: string;
@@ -166,7 +174,7 @@ export default function Header() {
 
         {/* Mobile menu button */}
         <button
-          className="xl:hidden p-2 text-white hover:text-saffron transition-colors"
+          className="xl:hidden p-2 text-white hover:text-saffron transition-colors cursor-pointer"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -176,65 +184,133 @@ export default function Header() {
 
       {/* Mobile Nav */}
       {isMobileMenuOpen && (
-        <div className="xl:hidden absolute top-20 left-0 w-full bg-ivory border-b border-slate/20 shadow-lg px-4 py-6 max-h-[calc(100vh-80px)] overflow-y-auto">
-          <nav className="flex flex-col gap-4">
-            {navLinks.map((link) => (
-              <div key={link.name} className="flex flex-col">
-                {link.href ? (
-                  link.href.startsWith("http") ? (
-                    <a
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-heading text-xl font-medium text-navy hover:text-terracotta transition-colors py-2 border-b border-slate/10"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </a>
-                  ) : (
-                    <Link
-                      href={link.href}
-                      className="font-heading text-xl font-medium text-navy hover:text-terracotta transition-colors py-2 border-b border-slate/10"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  )
-                ) : (
-                  <div className="font-heading text-xl font-bold text-navy py-2 border-b border-slate/10 flex items-center justify-between">
-                    <span>{link.name}</span>
-                    {link.dropdown && <ChevronDown className="w-5 h-5 text-slate-500" />}
-                  </div>
-                )}
-                {link.dropdown && (
-                  <div className="pl-4 mt-2 flex flex-col gap-2">
-                    {link.dropdown.map((sublink) => {
-                      const isExternal = sublink.href.startsWith('http');
-                      return isExternal ? (
-                        <a
-                          key={sublink.name}
-                          href={sublink.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-heading text-lg font-semibold text-slate-600 hover:text-saffron py-2 pl-4 border-l-2 border-transparent hover:border-saffron transition-all"
-                        >
-                          {sublink.name}
-                        </a>
-                      ) : (
+        <div className="xl:hidden absolute top-20 left-0 w-full bg-[#0E2A45] border-b border-[#F3CA55]/20 shadow-2xl px-5 py-6 max-h-[calc(100vh-80px)] overflow-y-auto">
+          <nav className="flex flex-col gap-1">
+            {navLinks.map((link) => {
+              const hasDropdown = Boolean(link.dropdown && link.dropdown.length > 0);
+              const isDropdownOpen = Boolean(openMobileDropdowns[link.name]);
+
+              return (
+                <div key={link.name} className="flex flex-col">
+                  {hasDropdown ? (
+                    <div className="py-2.5 border-b border-white/10 flex items-center justify-between gap-2">
+                      {link.href ? (
                         <Link
-                          key={sublink.name}
-                          href={sublink.href}
+                          href={link.href}
+                          className={`font-heading text-lg font-semibold transition-colors flex-1 ${
+                            pathname === link.href ? 'text-saffron' : 'text-white hover:text-saffron'
+                          }`}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className="font-heading text-lg font-semibold text-slate-600 hover:text-saffron py-2 pl-4 border-l-2 border-transparent hover:border-saffron transition-all"
                         >
-                          {sublink.name}
+                          {link.name}
                         </Link>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            ))}
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => toggleMobileDropdown(link.name)}
+                          className="font-heading text-lg font-semibold text-white hover:text-saffron transition-colors text-left flex-1 cursor-pointer"
+                        >
+                          {link.name}
+                        </button>
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={() => toggleMobileDropdown(link.name)}
+                        className="p-2 text-white/80 hover:text-saffron transition-colors cursor-pointer rounded-lg hover:bg-white/10"
+                        aria-label={`Toggle ${link.name} menu`}
+                      >
+                        <ChevronDown
+                          className={`w-5 h-5 transition-transform duration-300 ${
+                            isDropdownOpen ? 'rotate-180 text-saffron' : ''
+                          }`}
+                        />
+                      </button>
+                    </div>
+                  ) : link.href ? (
+                    link.href.startsWith("http") ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-heading text-lg font-semibold text-white hover:text-saffron transition-colors py-2.5 border-b border-white/10 flex items-center justify-between"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span>{link.name}</span>
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className={`font-heading text-lg font-semibold transition-colors py-2.5 border-b border-white/10 flex items-center justify-between ${
+                          pathname === link.href ? 'text-saffron' : 'text-white hover:text-saffron'
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <span>{link.name}</span>
+                      </Link>
+                    )
+                  ) : null}
+
+                  {/* Dropdown Items */}
+                  {hasDropdown && isDropdownOpen && (
+                    <div className="pl-3 pr-2 py-2.5 my-1.5 flex flex-col gap-1.5 bg-[#081C30] rounded-xl border border-white/10">
+                      {link.dropdown?.map((sublink) => {
+                        const isExternal = sublink.href.startsWith("http");
+                        const IconComponent = sublink.icon;
+
+                        const content = (
+                          <>
+                            {IconComponent && (
+                              <div
+                                className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-white shadow-xs ${
+                                  sublink.color || "bg-[#133A5E]"
+                                }`}
+                              >
+                                <IconComponent className="w-4 h-4" />
+                              </div>
+                            )}
+                            <div className="flex flex-col">
+                              <span className="font-heading text-sm font-semibold text-white group-hover:text-saffron transition-colors">
+                                {sublink.name}
+                              </span>
+                              {sublink.desc && (
+                                <span className="text-[11px] text-white/60">
+                                  {sublink.desc}
+                                </span>
+                              )}
+                            </div>
+                          </>
+                        );
+
+                        return isExternal ? (
+                          <a
+                            key={sublink.name}
+                            href={sublink.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-colors group"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {content}
+                          </a>
+                        ) : (
+                          <Link
+                            key={sublink.name}
+                            href={sublink.href}
+                            className={`flex items-center gap-3 p-2 rounded-lg hover:bg-white/10 transition-colors group ${
+                              pathname === sublink.href ? "bg-white/10 text-saffron" : ""
+                            }`}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {content}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </nav>
         </div>
       )}

@@ -150,7 +150,7 @@ export default function Home() {
       </section>
 
       {/* 3-Column Highlights Overlapping Cards */}
-      <section className="relative z-30 -mt-28 md:-mt-40 mb-12">
+      <section className="relative z-30 -mt-28 md:-mt-40 mb-12 bg-[#FAF7F2] md:bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
 
@@ -493,7 +493,7 @@ export default function Home() {
       <GallerySection />
 
       {/* Quick Contact & Map with Form */}
-      <section className="py-16 border-t border-slate/10">
+      <section className="py-16 md:py-24 bg-[#FAF7F2] border-t border-slate-200/60">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="font-sans text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-[#2B2129] leading-[1.1] mb-6 tracking-tight">Get in Touch</h2>

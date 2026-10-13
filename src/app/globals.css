@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #FAF7F2;
   --foreground: #133A5E; /* Navy from image */
   
   --color-ivory: #F4EDD2; /* Beige/Ivory from image */
@@ -27,16 +27,8 @@
   --font-heading: var(--font-manrope);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* For a truly distinct look, could be darker, but preserving original intent if needed */
-    --background: #0a0a0a;
-    --foreground: #F8F6F0;
-  }
-}
-
 body {
-  background: var(--background);
+  background-color: #FAF7F2;
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   @apply antialiased;
