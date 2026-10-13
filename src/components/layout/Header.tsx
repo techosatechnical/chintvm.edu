@@ -53,12 +53,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full bg-[#0E2A45] shadow-lg border-b border-[#F3CA55]/20">
       <div className="container mx-auto px-4 md:px-6 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group transition-transform duration-300 hover:scale-[1.02]">
-          <div className="relative h-14 w-auto aspect-3/1 md:h-16">
+          <div className="relative h-14 aspect-[3.8/1] md:h-[66px]">
             <Image
               src="/images/logo.png"
               alt="Chinmaya Educational Trust Logo"
               fill
-              sizes="200px"
+              sizes="(max-width: 768px) 220px, 280px"
               className="object-contain object-left"
               priority
             />

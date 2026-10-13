@@ -9,12 +9,12 @@ export default function Footer() {
         
         {/* About Section */}
         <div>
-          <div className="relative h-20 w-48 mb-6">
+          <div className="relative h-20 w-60 md:h-24 md:w-64 mb-6">
             <Image 
               src="/images/CV WHITE.png" 
               alt="Chinmaya Educational Trust Logo" 
               fill 
-              sizes="200px"
+              sizes="(max-width: 768px) 240px, 280px"
               className="object-contain object-left"
             />
           </div>
