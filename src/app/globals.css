@@ -1,14 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FAF7F2;
-  --foreground: #133A5E; /* Navy from image */
+  --background: #F9F6F7;
+  --foreground: #2B2129; /* Deep charcoal (zero blue) */
   
-  --color-ivory: #F4EDD2; /* Beige/Ivory from image */
-  --color-navy: #133A5E; /* Navy from image */
-  --color-saffron: #F3CA55; /* Gold/Saffron from image */
-  --color-orange: #F29A51; /* Orange from image */
-  --color-terracotta: #F0553A; /* Red-Orange/Terracotta from image */
+  --color-canvas: #F9F6F7;
+  --color-ivory: #FFE8D6; /* Warm Peach / Champagne Ivory */
+  --color-peach: #FFE8D6;
+  --color-navy: #2B2129; /* Replaced dark blue with deep charcoal */
+  --color-saffron: #FF971D; /* Vibrant Brand Orange */
+  --color-orange: #FF971D; /* Vibrant Brand Orange */
+  --color-terracotta: #FF971D; /* Warm Accent Orange */
   --color-slate: #667085;
 }
 
@@ -16,11 +18,13 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   
-  --color-ivory: var(--color-ivory);
-  --color-navy: var(--color-navy);
-  --color-saffron: var(--color-saffron);
-  --color-orange: var(--color-orange);
-  --color-terracotta: var(--color-terracotta);
+  --color-canvas: #F9F6F7;
+  --color-ivory: #FFE8D6;
+  --color-peach: #FFE8D6;
+  --color-navy: #2B2129;
+  --color-saffron: #FF971D;
+  --color-orange: #FF971D;
+  --color-terracotta: #FF971D;
   --color-slate: var(--color-slate);
 
   --font-sans: var(--font-inter);
@@ -28,7 +32,7 @@
 }
 
 body {
-  background-color: #FAF7F2;
+  background-color: #F9F6F7;
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
   @apply antialiased;
@@ -39,4 +43,23 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee-continuous {
+  display: flex;
+  width: max-content;
+  animation: marquee-scroll 42s linear infinite;
+}
+
+.animate-marquee-continuous:hover {
+  animation-play-state: paused;
 }

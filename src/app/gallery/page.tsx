@@ -73,13 +73,13 @@ export default function GalleryPage() {
         description="A visual archive of celebrations, sacred events, campus life, and achievements across Chinmaya institutions."
       />
 
-      <div className="bg-[#FAF7F2] min-h-screen py-12 md:py-16">
+      <div className="bg-[#F9F6F7] min-h-screen py-12 md:py-16">
         <div className="container mx-auto px-4 md:px-6">
           {/* Header navigation bar */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-10 pb-6 border-b border-slate-200">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:text-terracotta transition-colors"
+              className="inline-flex items-center gap-2 text-sm font-bold text-navy hover:text-[#FF971D] transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to Home</span>
@@ -101,8 +101,8 @@ export default function GalleryPage() {
                     onClick={() => setSelectedCategory(category)}
                     className={`px-4 py-2 rounded-full text-xs md:text-sm font-semibold transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
                       isSelected
-                        ? "bg-navy text-white shadow-md shadow-navy/20 scale-105"
-                        : "bg-white text-slate-600 hover:text-navy hover:bg-slate-100 border border-slate-200/80 shadow-xs"
+                        ? "bg-[#FF971D] text-white shadow-md shadow-[#FF971D]/25 scale-105"
+                        : "bg-white text-slate-600 hover:text-[#FF971D] hover:bg-[#FFE8D6]/30 border border-slate-200/80 shadow-xs"
                     }`}
                   >
                     <span>{category}</span>

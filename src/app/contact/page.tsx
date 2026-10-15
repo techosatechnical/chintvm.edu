@@ -7,18 +7,19 @@ export default function ContactPage() {
       <PageHeader 
         title="Contact Us" 
         description="Get in touch with the Chinmaya Educational, Cultural and Charitable Trust." 
+        bannerImage="/Contact banner.png"
       />
 
-      <section className="py-20 bg-gradient-to-b from-[#FBF9F4] via-[#F6EFE2] to-[#FAF6ED] min-h-[70vh]">
+      <section className="py-20 bg-gradient-to-b from-[#F9F6F7] via-[#FFE8D6]/30 to-[#F9F6F7] min-h-[70vh]">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center mb-12">
-            <span className="inline-block px-4 py-1.5 bg-navy/10 text-navy text-xs font-bold tracking-widest uppercase rounded-full mb-3 border border-navy/15">
+            <span className="inline-block px-4 py-1.5 bg-[#FFE8D6] text-[#FF971D] text-xs font-bold tracking-widest uppercase rounded-full mb-3 border border-[#FF971D]/20">
               Connect With Us
             </span>
             <h2 className="font-heading text-4xl md:text-5xl font-black text-navy tracking-tight">
-              Get in <span className="text-[#C85A17]">Touch</span>
+              Get in <span className="text-[#FF971D]">Touch</span>
             </h2>
-            <div className="w-20 h-1 bg-[#C85A17] mx-auto rounded-full mt-4"></div>
+            <div className="w-20 h-1 bg-[#FF971D] mx-auto rounded-full mt-4"></div>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl border border-slate-200/80 overflow-hidden">
@@ -32,7 +33,7 @@ export default function ContactPage() {
                       <input 
                         type="text" 
                         id="name" 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#F3CA55] focus:border-[#F3CA55] outline-none transition-all bg-[#FAF7EE]/50 text-slate-800" 
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#FF971D] focus:border-[#FF971D] outline-none transition-all bg-[#F9F6F7] text-slate-800" 
                         placeholder="Full Name" 
                       />
                     </div>
@@ -40,7 +41,7 @@ export default function ContactPage() {
                       <input 
                         type="email" 
                         id="email" 
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#F3CA55] focus:border-[#F3CA55] outline-none transition-all bg-[#FAF7EE]/50 text-slate-800" 
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#FF971D] focus:border-[#FF971D] outline-none transition-all bg-[#F9F6F7] text-slate-800" 
                         placeholder="Email Address" 
                       />
                     </div>
@@ -49,7 +50,7 @@ export default function ContactPage() {
                     <input 
                       type="tel" 
                       id="phone" 
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#F3CA55] focus:border-[#F3CA55] outline-none transition-all bg-[#FAF7EE]/50 text-slate-800" 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#FF971D] focus:border-[#FF971D] outline-none transition-all bg-[#F9F6F7] text-slate-800" 
                       placeholder="Phone Number" 
                     />
                   </div>
@@ -57,13 +58,13 @@ export default function ContactPage() {
                     <textarea 
                       id="message" 
                       rows={4} 
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#F3CA55] focus:border-[#F3CA55] outline-none transition-all bg-[#FAF7EE]/50 text-slate-800" 
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-[#FF971D] focus:border-[#FF971D] outline-none transition-all bg-[#F9F6F7] text-slate-800" 
                       placeholder="How can we help you?"
                     ></textarea>
                   </div>
                   <button 
                     type="button" 
-                    className="w-full md:w-auto px-9 bg-navy hover:bg-[#C85A17] text-white font-semibold py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg"
+                    className="w-full md:w-auto px-9 bg-[#FF971D] hover:bg-[#e68412] text-white font-bold py-3.5 rounded-xl transition-all shadow-md hover:shadow-lg cursor-pointer"
                   >
                     Submit Message
                   </button>
@@ -71,26 +72,26 @@ export default function ContactPage() {
 
                 <div className="grid sm:grid-cols-2 gap-6 pt-6 border-t border-slate-100">
                   <div className="flex items-start gap-4">
-                    <MapPin className="w-5 h-5 text-[#C85A17] shrink-0 mt-1" />
+                    <MapPin className="w-5 h-5 text-[#FF971D] shrink-0 mt-1" />
                     <div>
                       <h4 className="font-semibold text-navy mb-1 text-sm">Registered Office</h4>
                       <p className="text-slate-600 text-xs">Vazhuthacaud, Trivandrum - 695010</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <MapPin className="w-5 h-5 text-[#C85A17] shrink-0 mt-1" />
+                    <MapPin className="w-5 h-5 text-[#FF971D] shrink-0 mt-1" />
                     <div>
                       <h4 className="font-semibold text-navy mb-1 text-sm">Headquarters</h4>
                       <p className="text-slate-600 text-xs">Chinmaya Padmanabha, Manacaud - 695009</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <Phone className="w-5 h-5 text-[#C85A17] shrink-0" />
+                    <Phone className="w-5 h-5 text-[#FF971D] shrink-0" />
                     <p className="text-slate-600 font-medium text-xs">0471 2451533 / 2452033</p>
                   </div>
                   <div className="flex items-center gap-4">
-                    <Mail className="w-5 h-5 text-[#C85A17] shrink-0" />
-                    <a href="mailto:chintvm@gmail.com" className="text-slate-600 font-medium text-xs hover:text-[#C85A17] transition-colors">
+                    <Mail className="w-5 h-5 text-[#FF971D] shrink-0" />
+                    <a href="mailto:chintvm@gmail.com" className="text-slate-600 font-medium text-xs hover:text-[#FF971D] transition-colors">
                       chintvm@gmail.com
                     </a>
                   </div>

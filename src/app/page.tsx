@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin, Phone, Mail, Play, Pause, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, MapPin, Phone, Mail, Play, Pause, ChevronLeft, ChevronRight, Calendar, X, Maximize2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import GallerySection from "@/components/home/GallerySection";
+import { ALL_UPDATES } from "@/data/updates";
 
 const HERO_IMAGES = [
   "/images/carousel banners/carousel banner1.jpg",
@@ -20,19 +21,14 @@ const VIDEOS = [
   { id: 3, src: "/videos/video3.mp4", title: "Cultural Values" },
 ];
 
-const UPDATES = [
-  { id: 1, title: "Dr. Anil Keshan - Awarded Canada Research Chair", img: "/images/updates/updates1.jpg", date: "Oct 12, 2025" },
-  { id: 2, title: "Guru Seva Padak Ceremony", img: "/images/updates/updates2.jpg", date: "Sep 28, 2025" },
-  { id: 3, title: "The Art on the Walls Exhibition", img: "/images/updates/updates3.jpg", date: "Aug 15, 2025" },
-  { id: 4, title: "CSRS - Invites Application for Scientist 2026", img: "/images/updates/updates4.jpg", date: "Jul 05, 2025" },
-  { id: 5, title: "Annual Cultural Fest 2025 Highlights", img: "/images/updates/updates5.jpg", date: "Jun 20, 2025" },
-];
+const UPDATES = ALL_UPDATES;
 
 export default function Home() {
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
   const [direction, setDirection] = useState(0);
   const [activeVideoId, setActiveVideoId] = useState(1);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [selectedPoster, setSelectedPoster] = useState<(typeof UPDATES)[0] | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const activeVideo = VIDEOS.find(v => v.id === activeVideoId) || VIDEOS[0];
@@ -134,13 +130,13 @@ export default function Home() {
       </section>
 
       {/* Hero Text Banner (Moved from overlay) */}
-      <section className="bg-gradient-to-b from-[#FAF6ED] via-[#F5EFE0] to-[#EFE7D3] py-14 border-b border-amber-900/10">
+      <section className="bg-gradient-to-b from-[#FFFFFF] via-[#F9F6F7] to-[#FFE8D6]/40 py-14 border-b border-[#FFE8D6]">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <span className="inline-block px-4 py-1.5 bg-navy/10 text-navy text-xs font-bold tracking-wider uppercase rounded-full mb-4 border border-navy/15">
+          <span className="inline-block px-4 py-1.5 bg-[#FFE8D6] text-[#FF971D] text-xs font-bold tracking-wider uppercase rounded-full mb-4 border border-[#FF971D]/25">
             Empowering Future Generations
           </span>
           <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-navy mb-6">
-            Education with a <span className="text-[#C85A17] font-black italic">Vision.</span>
+            Education with a <span className="text-[#FF971D] font-black italic">Vision.</span>
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-slate-700 max-w-3xl mx-auto mb-8 font-medium leading-relaxed">
             The Chinmaya Educational, Cultural and Charitable Trust nurtures young minds through holistic education, blending academic excellence with spiritual growth.
@@ -150,7 +146,7 @@ export default function Home() {
       </section>
 
       {/* 3-Column Highlights Overlapping Cards */}
-      <section className="relative z-30 -mt-28 md:-mt-40 mb-12 bg-[#FAF7F2] md:bg-transparent">
+      <section className="relative z-30 -mt-28 md:-mt-40 mb-12 bg-[#F9F6F7] md:bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
 
@@ -159,10 +155,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 lg:p-10 rounded-2xl shadow-xl hover:shadow-2xl border-t-4 border-[#C85A17] transform transition-all duration-300 hover:-translate-y-2 group flex flex-col"
+              className="bg-white p-8 lg:p-10 rounded-2xl shadow-xl hover:shadow-2xl border-t-4 border-[#FF971D] transform transition-all duration-300 hover:-translate-y-2 group flex flex-col"
             >
-              <h3 className="font-heading text-2xl font-bold text-navy mb-4 group-hover:text-[#C85A17] transition-colors">
-                <span className="text-[#C85A17] group-hover:text-navy transition-colors">CHINMAYA</span> Vision
+              <h3 className="font-heading text-2xl font-bold text-navy mb-4 group-hover:text-[#FF971D] transition-colors">
+                <span className="text-[#FF971D] group-hover:text-navy transition-colors">CHINMAYA</span> Vision
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed mb-6 grow">
                 Our vision is to give maximum happiness to maximum number for the maximum time. To achieve this we have variety of programmes and Service designed to suit the needs and aptitude of all sections of society....
@@ -175,15 +171,15 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="bg-white p-8 lg:p-10 rounded-2xl shadow-xl hover:shadow-2xl border-t-4 border-navy transform transition-all duration-300 hover:-translate-y-2 group flex flex-col"
+              className="bg-white p-8 lg:p-10 rounded-2xl shadow-xl hover:shadow-2xl border-t-4 border-[#FF971D] transform transition-all duration-300 hover:-translate-y-2 group flex flex-col"
             >
-              <h3 className="font-heading text-2xl font-bold text-navy mb-4 group-hover:text-[#C85A17] transition-colors">
-                <span className="text-[#C85A17] group-hover:text-navy transition-colors">CHINMAYA</span> Vidyalayas
+              <h3 className="font-heading text-2xl font-bold text-navy mb-4 group-hover:text-[#FF971D] transition-colors">
+                <span className="text-[#FF971D] group-hover:text-navy transition-colors">CHINMAYA</span> Vidyalayas
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed mb-8 grow">
                 Chinmaya Educational Cultural and Charitable Trust, Trivandrum is the apex body under which the Chinmaya Vidyalayas...
               </p>
-              <Link href="/vidyalayas" className="bg-navy hover:bg-[#C85A17] text-white text-xs font-bold py-3 px-8 rounded-lg w-fit transition-colors shadow-md">
+              <Link href="/vidyalayas" className="bg-[#FF971D] hover:bg-[#e68412] text-white text-xs font-bold py-3 px-8 rounded-lg w-fit transition-colors shadow-md">
                 READ MORE
               </Link>
             </motion.div>
@@ -196,13 +192,13 @@ export default function Home() {
               transition={{ delay: 0.2 }}
               className="bg-white p-8 lg:p-10 rounded-2xl shadow-xl hover:shadow-2xl border-t-4 border-saffron transform transition-all duration-300 hover:-translate-y-2 group flex flex-col"
             >
-              <h3 className="font-heading text-2xl font-bold text-navy mb-4 group-hover:text-[#C85A17] transition-colors">
-                <span className="text-[#C85A17] group-hover:text-navy transition-colors">CHINMAYA</span> Temples
+              <h3 className="font-heading text-2xl font-bold text-navy mb-4 group-hover:text-[#FF971D] transition-colors">
+                <span className="text-[#FF971D] group-hover:text-navy transition-colors">CHINMAYA</span> Temples
               </h3>
               <p className="text-slate-600 text-sm leading-relaxed mb-8 flex-grow">
                 Renovated Chinmaya Govindamangalam Sree Mahavishnu Temple is one of the main Lord Vishnu temples in Trivandrum.
               </p>
-              <Link href="/temples" className="bg-navy hover:bg-[#C85A17] text-white text-xs font-bold py-3 px-8 rounded-lg w-fit transition-colors shadow-md">
+              <Link href="/temples" className="bg-[#FF971D] hover:bg-[#e68412] text-white text-xs font-bold py-3 px-8 rounded-lg w-fit transition-colors shadow-md">
                 READ MORE
               </Link>
             </motion.div>
@@ -212,11 +208,11 @@ export default function Home() {
       </section>
 
       {/* Interactive Bento Grid: Welcome & Mission */}
-      <section className="py-24 bg-[#FDFCF8] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]">
+      <section className="py-24 bg-[#F9F6F7] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:32px_32px]">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-sans text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-[#2B2129] leading-[1.1] mb-6 tracking-tight">Welcome to Chinmaya</h2>
-            <div className="w-24 h-1 bg-terracotta mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-[#FF971D] mx-auto rounded-full"></div>
           </div>
 
           {/* Bento Box Grid */}
@@ -230,7 +226,7 @@ export default function Home() {
               className="md:col-span-2 lg:col-span-2 row-span-2 bg-transparent p-4 lg:p-8 flex flex-col justify-center relative"
             >
               <h3 className="font-sans text-5xl md:text-6xl lg:text-[4rem] font-extrabold text-[#2B2129] leading-[1.1] mb-6 tracking-tight">
-                Our <span className="text-[#D45D25]">Heritage</span>
+                Our <span className="text-[#FF971D]">Heritage</span>
               </h3>
               <p className="text-[#7A7A7A] font-medium text-lg leading-relaxed mb-6 max-w-lg">
                 The Chinmaya Educational, Cultural and Charitable Trust, Trivandrum coordinates the activities of six Chinmaya Vidyalayas, Sree Sankara Balasramam, Chinmaya Temples and various Mission activities.
@@ -239,7 +235,7 @@ export default function Home() {
                 We are dedicated to the holistic development of individuals, emphasizing values, culture, and academic brilliance, guided by the timeless wisdom of Swami Chinmayananda.
               </p>
               <div className="flex flex-wrap items-center gap-6">
-                <Link href="/trustees" className="inline-flex items-center justify-center bg-[#CC5E28] hover:bg-[#A84A1D] text-white font-bold py-3.5 px-8 rounded-lg transition-colors shadow-sm">
+                <Link href="/trustees" className="inline-flex items-center justify-center bg-[#FF971D] hover:bg-[#e68412] text-white font-bold py-3.5 px-8 rounded-lg transition-colors shadow-sm">
                   Meet our Leadership
                 </Link>
               </div>
@@ -275,13 +271,13 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="md:col-span-2 lg:col-span-2 row-span-1 bg-navy text-white rounded-3xl p-8 lg:p-10 flex flex-col justify-center relative overflow-hidden shadow-lg"
+              className="md:col-span-2 lg:col-span-2 row-span-1 bg-[#FFE8D6] text-slate-900 rounded-3xl p-8 lg:p-10 flex flex-col justify-center relative overflow-hidden shadow-lg border border-[#FF971D]/30"
             >
-              <div className="absolute right-0 bottom-0 text-9xl text-white/5 font-serif leading-none -mb-10 mr-4 rotate-12">&quot;</div>
-              <blockquote className="text-xl lg:text-2xl italic font-medium leading-relaxed relative z-10">
+              <div className="absolute right-0 bottom-0 text-9xl text-[#FF971D]/15 font-serif leading-none -mb-10 mr-4 rotate-12">&quot;</div>
+              <blockquote className="text-xl lg:text-2xl italic font-semibold leading-relaxed relative z-10 text-slate-900">
                 &quot;Yahaiva phalam tahaiva karma&quot; – True education is that which prepares one to face the challenges of life, and not merely to make a living.
               </blockquote>
-              <p className="text-saffron font-semibold tracking-widest uppercase text-sm mt-6 relative z-10">— Swami Chinmayananda</p>
+              <p className="text-[#FF971D] font-bold tracking-widest uppercase text-sm mt-6 relative z-10">— Swami Chinmayananda</p>
             </motion.div>
 
             {/* Inactive Videos */}
@@ -313,19 +309,19 @@ export default function Home() {
       </section>
 
       {/* Our Institutions Showcase */}
-      <section className="py-24 bg-gradient-to-b from-[#FBF9F4] via-[#F6EFE2] to-[#FAF6ED] relative overflow-hidden border-t border-b border-amber-900/10">
+      <section className="py-24 bg-gradient-to-b from-[#F9F6F7] via-[#FFE8D6]/40 to-[#F9F6F7] relative overflow-hidden border-t border-b border-amber-900/10">
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1.5 bg-navy/10 text-navy text-xs font-bold tracking-widest uppercase rounded-full mb-4 border border-navy/15">
+            <span className="inline-block px-4 py-1.5 bg-[#FFE8D6] text-[#FF971D] text-xs font-bold tracking-widest uppercase rounded-full mb-4 border border-[#FF971D]/20">
               Centers of Excellence
             </span>
             <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-navy mb-4 tracking-tight">
-              Our <span className="text-[#C85A17]">Institutions</span>
+              Our <span className="text-[#FF971D]">Institutions</span>
             </h2>
             <p className="text-slate-600 font-medium text-base md:text-lg max-w-2xl mx-auto">
               Six prestigious Chinmaya Vidyalayas nurturing academic brilliance, moral fortitude, and cultural values.
             </p>
-            <div className="w-20 h-1 bg-[#C85A17] mx-auto rounded-full mt-6"></div>
+            <div className="w-20 h-1 bg-[#FF971D] mx-auto rounded-full mt-6"></div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
@@ -390,7 +386,7 @@ export default function Home() {
                       className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition-opacity"></div>
-                    <span className="absolute top-3 left-3 bg-[#0B2545]/85 backdrop-blur-md text-[#F3CA55] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-[#F3CA55]/30">
+                    <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-md text-[#FF971D] text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border border-[#FF971D]/30 shadow-sm">
                       {school.campus}
                     </span>
                   </div>
@@ -398,7 +394,7 @@ export default function Home() {
                   {/* Body Content */}
                   <div className="p-6 flex flex-col grow justify-between bg-white">
                     <div>
-                      <h3 className="font-heading font-bold text-xl text-navy group-hover:text-[#C85A17] transition-colors leading-snug">
+                      <h3 className="font-heading font-bold text-xl text-navy group-hover:text-[#FF971D] transition-colors leading-snug">
                         {school.name}
                       </h3>
                       <p className="text-xs text-slate-500 mt-2 font-medium">
@@ -406,9 +402,9 @@ export default function Home() {
                       </p>
                     </div>
 
-                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy group-hover:text-[#C85A17] transition-colors">
+                    <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs font-bold text-navy group-hover:text-[#FF971D] transition-colors">
                       <span className="uppercase tracking-wider">Explore Campus Website</span>
-                      <span className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-[#C85A17] group-hover:text-white flex items-center justify-center transition-all duration-300">
+                      <span className="w-8 h-8 rounded-full bg-slate-100 group-hover:bg-[#FF971D] group-hover:text-white flex items-center justify-center transition-all duration-300">
                         &rarr;
                       </span>
                     </div>
@@ -421,71 +417,91 @@ export default function Home() {
       </section>
 
       {/* Creative Chinmaya Updates Marquee / Carousel */}
-      <section className="py-24 bg-gradient-to-br from-[#08182B] via-[#0E2847] to-[#0A1F36] overflow-hidden relative border-t border-b border-white/10">
+      <section className="py-24 bg-[#FFE8D6]/35 overflow-hidden relative border-t border-b border-[#FFE8D6]">
         {/* Subtle decorative glow effect in background */}
-        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#F3CA55]/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#C85A17]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#FF971D]/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#FFE8D6] rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="container mx-auto px-4 md:px-6 mb-14 flex flex-col md:flex-row justify-between items-start md:items-end gap-6 relative z-10">
           <div>
-            <span className="inline-block px-4 py-1.5 bg-white/10 text-[#F3CA55] text-xs font-bold tracking-widest uppercase rounded-full mb-4 border border-[#F3CA55]/30 backdrop-blur-md">
+            <span className="inline-block px-4 py-1.5 bg-[#FFE8D6] text-[#FF971D] text-xs font-bold tracking-widest uppercase rounded-full mb-4 border border-[#FF971D]/20">
               News & Happenings
             </span>
-            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
-              Chinmaya <span className="text-[#F3CA55]">Updates</span>
+            <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl font-black text-slate-900 leading-tight tracking-tight">
+              Chinmaya <span className="text-[#FF971D]">Updates</span>
             </h2>
-            <p className="text-white/70 font-medium text-base md:text-lg mt-2 max-w-xl">
+            <p className="text-slate-600 font-medium text-base md:text-lg mt-2 max-w-xl">
               Stay informed with the latest milestones, accolades, and celebrations from across our institutions.
             </p>
           </div>
           <Link 
             href="/updates" 
-            className="group flex items-center gap-3 bg-gradient-to-r from-[#C85A17] to-[#D45D25] hover:from-[#B54E10] hover:to-[#C85A17] text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-[#C85A17]/30 hover:scale-105 shrink-0"
+            className="group flex items-center gap-3 bg-[#FF971D] hover:bg-[#e68412] text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-[#FF971D]/30 hover:scale-105 shrink-0"
           >
             <span>View All Updates</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        {/* Marquee Container */}
-        <div className="relative w-full flex overflow-hidden group">
-          <motion.div
-            className="flex gap-6 px-6"
-            animate={{ x: [0, -1920] }}
-            transition={{ repeat: Infinity, ease: "linear", duration: 32 }}
-            style={{ width: "fit-content" }}
-          >
-            {/* Double the array for seamless infinite scroll effect */}
-            {[...UPDATES, ...UPDATES].map((update, i) => (
-              <div 
-                key={`${update.id}-${i}`} 
-                className="w-80 md:w-96 flex flex-col shrink-0 bg-white rounded-2xl overflow-hidden shadow-xl group-hover:pause cursor-pointer border border-white/20 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group/card"
-              >
-                <div className="relative aspect-4/3 w-full overflow-hidden bg-slate-100">
-                  <Image
-                    src={update.img}
-                    alt={update.title}
-                    fill
-                    sizes="(max-width: 768px) 320px, 384px"
-                    className="object-cover group-hover/card:scale-108 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-                  {/* Date badge on top right */}
-                  <span className="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full border border-white/20">
-                    {update.date}
-                  </span>
+        {/* Marquee Container with Dual Gradient Fade Masks */}
+        <div className="relative w-full overflow-hidden group">
+          {/* Left Gradient Fade Mask Overlay */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-20 bg-gradient-to-r from-[#FAF4EE] via-[#FAF4EE]/90 to-transparent" />
+          
+          {/* Right Gradient Fade Mask Overlay */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-20 bg-gradient-to-l from-[#FAF4EE] via-[#FAF4EE]/90 to-transparent" />
+
+          {/* Marquee Track with CSS mask-image for seamless hardware fade */}
+          <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,black_8%,black_92%,transparent_100%)]">
+            <div className="animate-marquee-continuous flex gap-6 px-6 py-4">
+              {/* Double the array for seamless infinite scroll effect */}
+              {[...UPDATES, ...UPDATES].map((update, i) => (
+                <div 
+                  key={`${update.id}-${i}`} 
+                  onClick={() => setSelectedPoster(update)}
+                  className="w-72 sm:w-80 flex flex-col shrink-0 bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:border-[#FF971D]/40 cursor-pointer border border-slate-200/80 hover:-translate-y-2 transition-all duration-300 group/card"
+                >
+                  {/* Portrait Poster (aspect-[3/4] matching reference) */}
+                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-slate-100">
+                    <Image
+                      src={update.img}
+                      alt={update.title}
+                      fill
+                      sizes="(max-width: 640px) 288px, 320px"
+                      className="object-cover object-top group-hover/card:scale-105 transition-transform duration-500 ease-out"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
+                    
+                    {/* Hover expand button */}
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-navy flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity shadow-sm">
+                      <Maximize2 className="w-4 h-4 text-[#FF971D]" />
+                    </div>
+                  </div>
+
+                  {/* Card Content Footer matching user reference */}
+                  <div className="p-4 sm:p-5 bg-white flex flex-col justify-between grow">
+                    <div>
+                      {/* Date row in Saffron */}
+                      <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#FF971D] mb-1.5">
+                        <Calendar className="w-3.5 h-3.5 shrink-0" />
+                        <span>{update.date}</span>
+                      </div>
+
+                      {/* Title in bold uppercase */}
+                      <h3 className="font-heading font-extrabold text-navy text-sm sm:text-base leading-snug uppercase tracking-tight group-hover/card:text-[#FF971D] transition-colors line-clamp-2">
+                        {update.title}
+                      </h3>
+                    </div>
+
+                    <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold text-slate-500 group-hover/card:text-[#FF971D] transition-colors">
+                      <span>Click to view flyer</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/card:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
                 </div>
-                <div className="p-5 bg-white flex flex-col">
-                  <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#C85A17]">
-                    Announcement
-                  </span>
-                  <h3 className="font-heading font-bold text-navy text-lg leading-snug hover:text-[#C85A17] transition-colors line-clamp-2 mt-1.5">
-                    {update.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -493,11 +509,11 @@ export default function Home() {
       <GallerySection />
 
       {/* Quick Contact & Map with Form */}
-      <section className="py-16 md:py-24 bg-[#FAF7F2] border-t border-slate-200/60">
+      <section className="py-16 md:py-24 bg-[#F9F6F7] border-t border-slate-200/60">
         <div className="container mx-auto px-4 md:px-6 max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="font-sans text-4xl md:text-5xl lg:text-[4rem] font-extrabold text-[#2B2129] leading-[1.1] mb-6 tracking-tight">Get in Touch</h2>
-            <div className="w-20 h-1 bg-terracotta mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-[#FF971D] mx-auto rounded-full"></div>
           </div>
 
           <div className="bg-white rounded-3xl shadow-xl border border-slate/10 overflow-hidden">
@@ -520,7 +536,7 @@ export default function Home() {
                   <div>
                     <textarea id="message" rows={3} className="w-full px-4 py-3 rounded-xl border border-slate/20 focus:ring-2 focus:ring-saffron focus:border-saffron outline-none transition-all bg-ivory/50" placeholder="How can we help you?"></textarea>
                   </div>
-                  <button type="button" className="w-full md:w-auto px-8 bg-navy hover:bg-terracotta text-white font-semibold py-3 rounded-xl transition-colors shadow-md hover:shadow-lg">
+                  <button type="button" className="w-full md:w-auto px-8 bg-[#FF971D] hover:bg-[#e68412] text-white font-bold py-3.5 rounded-xl transition-colors shadow-md hover:shadow-lg">
                     Submit Message
                   </button>
                 </form>
@@ -557,6 +573,58 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Update Poster Lightbox Modal */}
+      <AnimatePresence>
+        {selectedPoster && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedPoster(null)}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4 md:p-8"
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-xl w-full max-h-[92vh] bg-white rounded-3xl overflow-hidden shadow-2xl flex flex-col border border-white/20"
+            >
+              {/* Header */}
+              <div className="p-4 sm:p-5 border-b border-slate-100 flex items-center justify-between gap-4 bg-[#F9F6F7]">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#FF971D]">
+                    {selectedPoster.date}
+                  </span>
+                  <h3 className="font-heading font-bold text-navy text-base sm:text-lg leading-snug">
+                    {selectedPoster.title}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedPoster(null)}
+                  className="p-2 rounded-full hover:bg-slate-200 text-slate-700 transition-colors cursor-pointer shrink-0"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              {/* Poster Image */}
+              <div className="relative aspect-[3/4] w-full max-h-[72vh] bg-slate-900">
+                <Image
+                  src={selectedPoster.img}
+                  alt={selectedPoster.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 700px"
+                  className="object-contain"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

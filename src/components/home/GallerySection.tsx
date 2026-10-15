@@ -55,12 +55,12 @@ export default function GallerySection() {
   }, [lightboxIndex]);
 
   return (
-    <section className="py-20 md:py-24 bg-[#FCF9F2] relative overflow-hidden">
+    <section className="py-20 md:py-24 bg-[#F9F6F7] relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         {/* Header with Title and View All Button */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase bg-terracotta/10 text-terracotta mb-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase bg-[#FFE8D6] text-[#FF971D] mb-2 border border-[#FF971D]/20">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Moments & Memories</span>
             </div>
@@ -71,7 +71,7 @@ export default function GallerySection() {
 
           <Link
             href="/gallery"
-            className="group inline-flex items-center gap-2.5 px-6 py-3 bg-navy hover:bg-terracotta text-white font-bold rounded-xl transition-all duration-300 shadow-md hover:shadow-xl self-start sm:self-auto shrink-0"
+            className="group inline-flex items-center gap-2.5 px-6 py-3 bg-[#FF971D] hover:bg-[#e68412] text-white font-bold rounded-xl transition-all duration-300 shadow-md hover:shadow-xl self-start sm:self-auto shrink-0"
           >
             <span>View Full Gallery</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

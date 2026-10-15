@@ -21,13 +21,13 @@ export default function TrusteesPage() {
       />
 
       {/* Leadership Overview & Philosophy */}
-      <section className="py-16 md:py-20 bg-[#FCF9F2] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-saffron/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-terracotta/10 rounded-full blur-3xl pointer-events-none" />
+      <section className="py-16 md:py-20 bg-[#F9F6F7] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-[#FF971D]/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#FFE8D6] rounded-full blur-3xl pointer-events-none" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-4 mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-terracotta/10 text-terracotta">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase bg-[#FFE8D6] text-[#FF971D] border border-[#FF971D]/20">
               <Users className="w-3.5 h-3.5" />
               <span>Custodians of Vision</span>
             </div>
@@ -45,7 +45,7 @@ export default function TrusteesPage() {
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
             {/* President */}
             <div className="group bg-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200/80 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-saffron/50 bg-slate-100">
+              <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-[#FF971D]/50 bg-slate-100">
                 <Image
                   src={PRESIDENT.img}
                   alt={PRESIDENT.name}
@@ -56,13 +56,13 @@ export default function TrusteesPage() {
               </div>
               <div className="flex flex-col justify-between text-center sm:text-left grow">
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-saffron/20 text-navy mb-2">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-[#FFE8D6] text-[#FF971D] mb-2">
                     {PRESIDENT.designation}
                   </span>
                   <h3 className="font-heading text-xl sm:text-2xl font-bold text-navy leading-snug">
                     {PRESIDENT.name}
                   </h3>
-                  <p className="text-xs font-bold text-terracotta mt-1 uppercase tracking-wide">
+                  <p className="text-xs font-bold text-[#FF971D] mt-1 uppercase tracking-wide">
                     Global Head &bull; Chinmaya Mission
                   </p>
                 </div>
@@ -71,7 +71,7 @@ export default function TrusteesPage() {
 
             {/* Chief Sevak */}
             <div className="group bg-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-slate-200/80 flex flex-col sm:flex-row items-center sm:items-start gap-6">
-              <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-saffron/50 bg-slate-100">
+              <div className="relative w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden shrink-0 shadow-md border-2 border-[#FF971D]/50 bg-slate-100">
                 <Image
                   src={CHIEF_SEVAK.img}
                   alt={CHIEF_SEVAK.name}
@@ -82,7 +82,7 @@ export default function TrusteesPage() {
               </div>
               <div className="flex flex-col justify-between text-center sm:text-left grow">
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-terracotta/15 text-terracotta mb-2">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-[#FFE8D6] text-[#FF971D] mb-2">
                     {CHIEF_SEVAK.designation}
                   </span>
                   <h3 className="font-heading text-xl sm:text-2xl font-bold text-navy leading-snug">
@@ -102,7 +102,7 @@ export default function TrusteesPage() {
       <section className="py-16 md:py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase bg-saffron/20 text-navy mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase bg-[#FFE8D6] text-[#FF971D] mb-3 border border-[#FF971D]/20">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Spiritual Guidance</span>
             </div>
@@ -115,7 +115,7 @@ export default function TrusteesPage() {
             {SPIRITUAL_PATRONS.map((patron) => (
               <div
                 key={patron.id}
-                className="group bg-[#FAF7F2] hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-saffron shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row items-center sm:items-start gap-5"
+                className="group bg-[#F9F6F7] hover:bg-white rounded-2xl p-6 border border-slate-200/80 hover:border-[#FF971D] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col sm:flex-row items-center sm:items-start gap-5"
               >
                 <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden shrink-0 shadow-sm border border-slate-300 bg-slate-100">
                   <Image
@@ -127,7 +127,7 @@ export default function TrusteesPage() {
                   />
                 </div>
                 <div className="flex flex-col justify-center">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-terracotta block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#FF971D] block">
                     {patron.designation}
                   </span>
                   <h3 className="font-heading text-lg font-bold text-navy mt-1">
@@ -141,10 +141,10 @@ export default function TrusteesPage() {
       </section>
 
       {/* Members of the Board of Trustees */}
-      <section className="py-16 md:py-24 bg-[#FCF9F2] border-t border-slate-200/80">
+      <section className="py-16 md:py-24 bg-[#F9F6F7] border-t border-slate-200/80">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-14">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase bg-terracotta/10 text-terracotta mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase bg-[#FFE8D6] text-[#FF971D] mb-3 border border-[#FF971D]/20">
               <Award className="w-3.5 h-3.5" />
               <span>Trust Leadership</span>
             </div>
@@ -160,7 +160,7 @@ export default function TrusteesPage() {
             {TRUSTEES.map((trustee) => (
               <div
                 key={trustee.id}
-                className="group bg-white hover:bg-white rounded-2xl p-5 border border-slate-200/80 hover:border-terracotta/40 shadow-xs hover:shadow-xl transition-all duration-300 flex items-center gap-5"
+                className="group bg-white hover:bg-white rounded-2xl p-5 border border-slate-200/80 hover:border-[#FF971D]/40 shadow-xs hover:shadow-xl transition-all duration-300 flex items-center gap-5"
               >
                 {/* Photo area with exact same size as Spiritual Mentors */}
                 <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden shrink-0 shadow-sm border border-slate-300 bg-slate-100">
@@ -175,10 +175,10 @@ export default function TrusteesPage() {
 
                 {/* Details */}
                 <div className="flex flex-col justify-center grow">
-                  <span className="text-[11px] font-bold uppercase tracking-wider text-terracotta block">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-[#FF971D] block">
                     {trustee.designation}
                   </span>
-                  <h3 className="font-heading font-bold text-navy group-hover:text-terracotta text-base leading-snug transition-colors mt-0.5">
+                  <h3 className="font-heading font-bold text-navy group-hover:text-[#FF971D] text-base leading-snug transition-colors mt-0.5">
                     {trustee.name}
                   </h3>
                 </div>
