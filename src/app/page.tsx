@@ -45,22 +45,33 @@ export default function Home() {
   const nextSlide = () => setCurrentHeroSlide((prev) => (prev + 1) % HERO_IMAGES.length);
   const prevSlide = () => setCurrentHeroSlide((prev) => (prev - 1 + HERO_IMAGES.length) % HERO_IMAGES.length);
 
+  // Auto-play when active video changes and isPlaying is true
+  useEffect(() => {
+    if (isPlaying && videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn("Video playback error:", err);
+          setIsPlaying(false);
+        });
+      }
+    }
+  }, [activeVideoId]);
+
   const handleVideoClick = (id: number) => {
     setActiveVideoId(id);
     setIsPlaying(true);
-    if (videoRef.current) {
-      videoRef.current.play();
-    }
   };
 
   const togglePlay = () => {
     if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
+      if (videoRef.current.paused) {
+        videoRef.current.play().catch((err) => {
+          console.warn("Video playback error:", err);
+        });
       } else {
-        videoRef.current.play();
+        videoRef.current.pause();
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
@@ -252,16 +263,30 @@ export default function Home() {
                 ref={videoRef}
                 key={activeVideo.src}
                 src={activeVideo.src}
+                autoPlay={isPlaying}
+                playsInline
                 className="w-full h-full object-cover opacity-100"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
               />
-              <div className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}>
-                <button onClick={togglePlay} className="w-24 h-24 bg-saffron/90 hover:bg-saffron text-navy rounded-full flex items-center justify-center transform transition-all hover:scale-110 shadow-xl mb-4 backdrop-blur-sm">
+              <div 
+                onClick={togglePlay}
+                className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}
+              >
+                <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    togglePlay();
+                  }} 
+                  className="w-24 h-24 bg-[#FF971D]/90 hover:bg-[#FF971D] text-white rounded-full flex items-center justify-center transform transition-all hover:scale-110 shadow-xl mb-4 backdrop-blur-sm"
+                  aria-label={isPlaying ? "Pause video" : "Play video"}
+                >
                   {isPlaying ? <Pause className="w-10 h-10" /> : <Play className="w-10 h-10 ml-2" />}
                 </button>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent text-white">
-                <span className="bg-terracotta text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block shadow-md">Now Playing</span>
+              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent text-white pointer-events-none">
+                <span className="bg-[#FF971D] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block shadow-md">Now Playing</span>
                 <h4 className="font-heading text-3xl font-bold drop-shadow-lg">{activeVideo.title}</h4>
               </div>
             </motion.div>
@@ -291,14 +316,14 @@ export default function Home() {
                 className="md:col-span-1 lg:col-span-1 row-span-1 bg-black rounded-3xl relative overflow-hidden cursor-pointer group shadow-lg"
                 onClick={() => handleVideoClick(video.id)}
               >
-                <video src={video.src} className="w-full h-full object-cover opacity-100 transition-transform duration-500 group-hover:scale-105" />
+                <video src={video.src} preload="metadata" playsInline className="w-full h-full object-cover opacity-100 transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 flex flex-col items-center justify-center">
                   <div className="w-16 h-16 rounded-full border-2 border-white/30 group-hover:border-white/80 group-hover:bg-white/20 backdrop-blur-sm flex items-center justify-center transition-all transform group-hover:scale-110">
                     <Play className="w-6 h-6 text-white ml-1" />
                   </div>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-                  <h4 className="text-white font-bold text-lg leading-tight group-hover:text-saffron transition-colors drop-shadow-md">{video.title}</h4>
+                  <h4 className="text-white font-bold text-lg leading-tight group-hover:text-[#FF971D] transition-colors drop-shadow-md">{video.title}</h4>
                   <p className="text-white/80 text-xs mt-1 drop-shadow-sm">Play Video</p>
                 </div>
               </motion.div>
