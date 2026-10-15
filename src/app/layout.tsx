@@ -31,7 +31,7 @@ export default function RootLayout({
       className={`${inter.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-[#F9F6F7] text-navy">
-        <React.Suspense fallback={<div className="h-20 w-full bg-white border-b border-[#FFE8D6]" />}>
+        <React.Suspense fallback={<div className="h-[106px] w-full bg-[#2B2129] border-b border-[#FFE8D6]" />}>
           <Header />
         </React.Suspense>
         <main className="flex-1 bg-[#F9F6F7]">{children}</main>
