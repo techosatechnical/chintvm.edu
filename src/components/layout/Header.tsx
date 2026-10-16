@@ -57,7 +57,7 @@ export default function Header() {
         dropdown: [
           { name: "Attukal", href: "https://att.chintvm.edu.in/", icon: GraduationCap, desc: "Trivandrum City Campus" },
           { name: "Kattakada", href: "https://kda.chintvm.edu.in/", icon: BookOpen, desc: "Kattakada Regional Campus" },
-          { name: "Kollam", href: "https://kol.chintvm.edu.in/", icon: MapPin, desc: "Kollam District Campus" },
+          { name: "Kollam", href: "https://chinmaya-kollam.vercel.app/", icon: MapPin, desc: "Kollam District Campus" },
           { name: "Kunnumpuram", href: "https://kpm.chintvm.edu.in/", icon: Sparkles, desc: "Kunnumpuram Campus" },
           { name: "Naruvamoodu", href: "https://nmd.chintvm.edu.in/", icon: Users, desc: "Naruvamoodu Regional Campus" },
           { name: "Vazhuthacaud", href: "https://vkd.chintvm.edu.in/", icon: Landmark, desc: "Vazhuthacaud City Campus" },

@@ -24,7 +24,7 @@ const SCHOOLS = [
     name: "Chinmaya Vidyalaya, Kollam",
     campus: "Kollam District Campus",
     img: "/images/schools/chinmaya kollam.jpg",
-    link: "https://kol.chintvm.edu.in/",
+    link: "https://chinmaya-kollam.vercel.app/",
     location: "Kollam District",
     affiliation: "Affiliated to CBSE · Holistic Chinmaya Vision Programme"
   },
