@@ -16,7 +16,7 @@ export default function Footer() {
       <div className="absolute top-0 right-0 w-48 h-48 rounded-full border border-[#FF971D]/20 pointer-events-none" />
 
       {/* 3. Dot-grid patch in Left Corner */}
-      <div 
+      <div
         className="absolute top-8 left-6 md:top-12 md:left-10 w-44 h-36 opacity-30 pointer-events-none"
         style={{
           backgroundImage: "radial-gradient(#FF971D 1.5px, transparent 1.5px)",
@@ -25,7 +25,7 @@ export default function Footer() {
       />
 
       {/* 4. Dot-grid patch in Right Corner */}
-      <div 
+      <div
         className="absolute top-10 right-20 w-44 h-32 opacity-25 pointer-events-none hidden md:block"
         style={{
           backgroundImage: "radial-gradient(#FF971D 1.5px, transparent 1.5px)",
@@ -97,7 +97,7 @@ export default function Footer() {
           <ul className="flex flex-col gap-2 text-xs md:text-sm text-slate-700">
             <li><a href="https://att.chintvm.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF971D] transition-colors">Chinmaya Vidyalaya, Attukal</a></li>
             <li><a href="https://kda.chintvm.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF971D] transition-colors">Chinmaya Vidyalaya, Kattakada</a></li>
-            <li><a href="https://kol.chintvm.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF971D] transition-colors">Chinmaya Vidyalaya, Kollam</a></li>
+            <li><a href="https://chinmaya-kollam.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF971D] transition-colors">Chinmaya Vidyalaya, Kollam</a></li>
             <li><a href="https://kpm.chintvm.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF971D] transition-colors">Chinmaya Vidyalaya, Kunnumpuram</a></li>
             <li><a href="https://nmd.chintvm.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF971D] transition-colors">Chinmaya Vidyalaya, Naruvamoodu</a></li>
             <li><a href="https://vkd.chintvm.edu.in/" target="_blank" rel="noopener noreferrer" className="hover:text-[#FF971D] transition-colors">Chinmaya Vidyalaya, Vazhuthacaud</a></li>
