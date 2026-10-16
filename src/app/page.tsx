@@ -270,15 +270,15 @@ export default function Home() {
                 onPause={() => setIsPlaying(false)}
                 onEnded={() => setIsPlaying(false)}
               />
-              <div 
+              <div
                 onClick={togglePlay}
                 className={`absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 cursor-pointer ${isPlaying ? 'opacity-0 hover:opacity-100' : 'opacity-100'}`}
               >
-                <button 
+                <button
                   onClick={(e) => {
                     e.stopPropagation();
                     togglePlay();
-                  }} 
+                  }}
                   className="w-24 h-24 bg-[#FF971D]/90 hover:bg-[#FF971D] text-white rounded-full flex items-center justify-center transform transition-all hover:scale-110 shadow-xl mb-4 backdrop-blur-sm"
                   aria-label={isPlaying ? "Pause video" : "Play video"}
                 >
@@ -351,41 +351,41 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
             {[
-              { 
-                name: "Chinmaya Vidyalaya, Attukal", 
-                campus: "Trivandrum City Campus", 
-                img: "/images/schools/chinmaya attukal.jpg", 
-                link: "https://att.chintvm.edu.in/" 
+              {
+                name: "Chinmaya Vidyalaya, Attukal",
+                campus: "Trivandrum City Campus",
+                img: "/images/schools/chinmaya attukal.jpg",
+                link: "https://att.chintvm.edu.in/"
               },
-              { 
-                name: "Chinmaya Vidyalaya, Kattakada", 
-                campus: "Kattakada Regional Campus", 
-                img: "/images/schools/chinmaya kattakada.jpg", 
-                link: "https://kda.chintvm.edu.in/" 
+              {
+                name: "Chinmaya Vidyalaya, Kattakada",
+                campus: "Kattakada Regional Campus",
+                img: "/images/schools/chinmaya kattakada.jpg",
+                link: "https://kda.chintvm.edu.in/"
               },
-              { 
-                name: "Chinmaya Vidyalaya, Kollam", 
-                campus: "Kollam District Campus", 
-                img: "/images/schools/chinmaya kollam.jpg", 
-                link: "https://kol.chintvm.edu.in/" 
+              {
+                name: "Chinmaya Vidyalaya, Kollam",
+                campus: "Kollam District Campus",
+                img: "/images/schools/chinmaya kollam.jpg",
+                link: "https://chinmaya-kollam.vercel.app/"
               },
-              { 
-                name: "Chinmaya Vidyalaya, Kunnumpuram", 
-                campus: "Kunnumpuram Campus", 
-                img: "/images/schools/chinmaya kunnumpuram.jpg", 
-                link: "https://kpm.chintvm.edu.in/" 
+              {
+                name: "Chinmaya Vidyalaya, Kunnumpuram",
+                campus: "Kunnumpuram Campus",
+                img: "/images/schools/chinmaya kunnumpuram.jpg",
+                link: "https://kpm.chintvm.edu.in/"
               },
-              { 
-                name: "Chinmaya Vidyalaya, Naruvamoodu", 
-                campus: "Naruvamoodu Regional Campus", 
-                img: "/images/schools/chinmaya naruvamood.jpg", 
-                link: "https://nmd.chintvm.edu.in/" 
+              {
+                name: "Chinmaya Vidyalaya, Naruvamoodu",
+                campus: "Naruvamoodu Regional Campus",
+                img: "/images/schools/chinmaya naruvamood.jpg",
+                link: "https://nmd.chintvm.edu.in/"
               },
-              { 
-                name: "Chinmaya Vidyalaya, Vazhuthacaud", 
-                campus: "Vazhuthacaud City Campus", 
-                img: "/images/schools/chinmaya vazhutakad.jpg", 
-                link: "https://vkd.chintvm.edu.in/" 
+              {
+                name: "Chinmaya Vidyalaya, Vazhuthacaud",
+                campus: "Vazhuthacaud City Campus",
+                img: "/images/schools/chinmaya vazhutakad.jpg",
+                link: "https://vkd.chintvm.edu.in/"
               }
             ].map((school, index) => (
               <motion.div
@@ -459,8 +459,8 @@ export default function Home() {
               Stay informed with the latest milestones, accolades, and celebrations from across our institutions.
             </p>
           </div>
-          <Link 
-            href="/updates" 
+          <Link
+            href="/updates"
             className="group flex items-center gap-3 bg-[#FF971D] hover:bg-[#e68412] text-white font-bold px-7 py-3.5 rounded-full transition-all duration-300 shadow-lg hover:shadow-[#FF971D]/30 hover:scale-105 shrink-0"
           >
             <span>View All Updates</span>
@@ -472,7 +472,7 @@ export default function Home() {
         <div className="relative w-full overflow-hidden group">
           {/* Left Gradient Fade Mask Overlay */}
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-20 bg-gradient-to-r from-[#FAF4EE] via-[#FAF4EE]/90 to-transparent" />
-          
+
           {/* Right Gradient Fade Mask Overlay */}
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-32 md:w-48 z-20 bg-gradient-to-l from-[#FAF4EE] via-[#FAF4EE]/90 to-transparent" />
 
@@ -481,8 +481,8 @@ export default function Home() {
             <div className="animate-marquee-continuous flex gap-6 px-6 py-4">
               {/* Double the array for seamless infinite scroll effect */}
               {[...UPDATES, ...UPDATES].map((update, i) => (
-                <div 
-                  key={`${update.id}-${i}`} 
+                <div
+                  key={`${update.id}-${i}`}
                   onClick={() => setSelectedPoster(update)}
                   className="w-72 sm:w-80 flex flex-col shrink-0 bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl hover:border-[#FF971D]/40 cursor-pointer border border-slate-200/80 hover:-translate-y-2 transition-all duration-300 group/card"
                 >
@@ -496,7 +496,7 @@ export default function Home() {
                       className="object-cover object-top group-hover/card:scale-105 transition-transform duration-500 ease-out"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity"></div>
-                    
+
                     {/* Hover expand button */}
                     <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-navy flex items-center justify-center opacity-0 group-hover/card:opacity-100 transition-opacity shadow-sm">
                       <Maximize2 className="w-4 h-4 text-[#FF971D]" />
