@@ -43,33 +43,33 @@ export default function Header() {
       desc?: string;
     }>;
   }> = [
-    { name: "Home", href: "/" },
-    {
-      name: "CEC Trust",
-      dropdown: [
-        { name: "Board of Trustees", href: "/trustees", icon: Users, desc: "Meet our leadership team" },
-        { name: "Temples and Shrines", href: "/temples", icon: Landmark, desc: "Explore our spiritual centers" }
-      ]
-    },
-    {
-      name: "Vidyalayas",
-      href: "/vidyalayas",
-      dropdown: [
-        { name: "Attukal", href: "https://att.chintvm.edu.in/", icon: GraduationCap, desc: "Trivandrum City Campus" },
-        { name: "Kattakada", href: "https://kda.chintvm.edu.in/", icon: BookOpen, desc: "Kattakada Regional Campus" },
-        { name: "Kollam", href: "https://kol.chintvm.edu.in/", icon: MapPin, desc: "Kollam District Campus" },
-        { name: "Kunnumpuram", href: "https://kpm.chintvm.edu.in/", icon: Sparkles, desc: "Kunnumpuram Campus" },
-        { name: "Naruvamoodu", href: "https://nmd.chintvm.edu.in/", icon: Users, desc: "Naruvamoodu Regional Campus" },
-        { name: "Vazhuthacaud", href: "https://vkd.chintvm.edu.in/", icon: Landmark, desc: "Vazhuthacaud City Campus" },
-      ]
-    },
-    { name: "Mission", href: "https://chinmaya-mission-thiruvananthapuram.vercel.app/" },
-    { name: "Downloads", href: "/downloads" },
-    { name: "Tenders", href: "/tenders" },
-    { name: "Careers", href: "/careers" },
-    { name: "Contact", href: "/contact" },
-    { name: "Contribute", href: "/contribution", isCta: true },
-  ];
+      { name: "Home", href: "/" },
+      {
+        name: "CEC Trust",
+        dropdown: [
+          { name: "Board of Trustees", href: "/trustees", icon: Users, desc: "Meet our leadership team" },
+          { name: "Temples and Shrines", href: "/temples", icon: Landmark, desc: "Explore our spiritual centers" }
+        ]
+      },
+      {
+        name: "Vidyalayas",
+        href: "/vidyalayas",
+        dropdown: [
+          { name: "Attukal", href: "https://att.chintvm.edu.in/", icon: GraduationCap, desc: "Trivandrum City Campus" },
+          { name: "Kattakada", href: "https://kda.chintvm.edu.in/", icon: BookOpen, desc: "Kattakada Regional Campus" },
+          { name: "Kollam", href: "https://kol.chintvm.edu.in/", icon: MapPin, desc: "Kollam District Campus" },
+          { name: "Kunnumpuram", href: "https://kpm.chintvm.edu.in/", icon: Sparkles, desc: "Kunnumpuram Campus" },
+          { name: "Naruvamoodu", href: "https://nmd.chintvm.edu.in/", icon: Users, desc: "Naruvamoodu Regional Campus" },
+          { name: "Vazhuthacaud", href: "https://vkd.chintvm.edu.in/", icon: Landmark, desc: "Vazhuthacaud City Campus" },
+        ]
+      },
+      { name: "Mission", href: "https://chinmaya-mission-thiruvananthapuram.vercel.app/" },
+      { name: "Downloads", href: "/downloads" },
+      { name: "Tenders", href: "/tenders" },
+      { name: "Careers", href: "/careers" },
+      { name: "Contact", href: "/contact" },
+      { name: "Contribute", href: "/contribution", isCta: true },
+    ];
 
   return (
     <header className="sticky top-0 z-50 w-full">
@@ -119,10 +119,22 @@ export default function Header() {
 
       {/* Main Navigation Bar */}
       <div className="w-full bg-white/95 backdrop-blur-xl border-b border-[#FFE8D6] shadow-[0_4px_25px_-5px_rgba(43,33,41,0.06)] relative">
-        <div className="container mx-auto px-4 md:px-6 h-[74px] flex items-center justify-between">
+        <div className="container mx-auto px-4 md:px-6 h-[86px] md:h-[100px] flex items-center justify-between">
           {/* Logo & Brand Info */}
-          <div className="flex items-center gap-4">
-            <Link href="/" className="flex items-center group transition-transform duration-300 hover:scale-[1.02]">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <Link href="/" className="flex items-center gap-2.5 sm:gap-3.5 group transition-transform duration-300 hover:scale-[1.02]">
+              {/* Logo Left */}
+              <div className="relative h-[78px] md:h-[94px] aspect-[159/290] shrink-0">
+                <Image
+                  src="/images/CM black.png"
+                  alt="Chinmaya Mission Logo"
+                  fill
+                  sizes="(max-width: 768px) 55px, 65px"
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              {/* CV Black */}
               <div className="relative h-12 md:h-14 aspect-[4/1]">
                 <Image
                   src="/images/CV BLACK.png"
@@ -134,7 +146,7 @@ export default function Header() {
                 />
               </div>
             </Link>
-            <div className="hidden 2xl:block h-8 w-px bg-[#FFE8D6]" />
+            <div className="hidden 2xl:block h-10 w-px bg-[#FFE8D6]" />
             <div className="hidden 2xl:flex flex-col text-left">
               <span className="text-[10px] font-bold text-[#FF971D] uppercase tracking-wider">Estd. 1980</span>
               <span className="text-[11px] font-semibold text-[#2B2129]/75 tracking-tight">Trivandrum &amp; Kollam</span>
@@ -168,11 +180,10 @@ export default function Header() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`relative font-heading text-[13.5px] 2xl:text-[14.5px] font-semibold tracking-normal flex items-center gap-1 px-3.5 py-1.5 rounded-full transition-all duration-200 ${
-                          isActive
-                            ? "text-[#FF971D] bg-[#FFE8D6] font-bold shadow-2xs"
-                            : "text-[#2B2129] hover:text-[#FF971D] hover:bg-[#FFE8D6]/45"
-                        }`}
+                        className={`relative font-heading text-[13.5px] 2xl:text-[14.5px] font-semibold tracking-normal flex items-center gap-1 px-3.5 py-1.5 rounded-full transition-all duration-200 ${isActive
+                          ? "text-[#FF971D] bg-[#FFE8D6] font-bold shadow-2xs"
+                          : "text-[#2B2129] hover:text-[#FF971D] hover:bg-[#FFE8D6]/45"
+                          }`}
                       >
                         <span>{link.name}</span>
                         {link.dropdown && (
@@ -182,11 +193,10 @@ export default function Header() {
                     ) : (
                       <Link
                         href={link.href}
-                        className={`relative font-heading text-[13.5px] 2xl:text-[14.5px] font-semibold tracking-normal flex items-center gap-1 px-3.5 py-1.5 rounded-full transition-all duration-200 ${
-                          isActive
-                            ? "text-[#FF971D] bg-[#FFE8D6] font-bold shadow-2xs"
-                            : "text-[#2B2129] hover:text-[#FF971D] hover:bg-[#FFE8D6]/45"
-                        }`}
+                        className={`relative font-heading text-[13.5px] 2xl:text-[14.5px] font-semibold tracking-normal flex items-center gap-1 px-3.5 py-1.5 rounded-full transition-all duration-200 ${isActive
+                          ? "text-[#FF971D] bg-[#FFE8D6] font-bold shadow-2xs"
+                          : "text-[#2B2129] hover:text-[#FF971D] hover:bg-[#FFE8D6]/45"
+                          }`}
                       >
                         <span>{link.name}</span>
                         {link.dropdown && (
@@ -197,11 +207,10 @@ export default function Header() {
                   ) : (
                     <button
                       type="button"
-                      className={`relative font-heading text-[13.5px] 2xl:text-[14.5px] font-semibold tracking-normal flex items-center gap-1 px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer ${
-                        isActive
-                          ? "text-[#FF971D] bg-[#FFE8D6] font-bold shadow-2xs"
-                          : "text-[#2B2129] hover:text-[#FF971D] hover:bg-[#FFE8D6]/45"
-                      }`}
+                      className={`relative font-heading text-[13.5px] 2xl:text-[14.5px] font-semibold tracking-normal flex items-center gap-1 px-3.5 py-1.5 rounded-full transition-all duration-200 cursor-pointer ${isActive
+                        ? "text-[#FF971D] bg-[#FFE8D6] font-bold shadow-2xs"
+                        : "text-[#2B2129] hover:text-[#FF971D] hover:bg-[#FFE8D6]/45"
+                        }`}
                     >
                       <span>{link.name}</span>
                       {link.dropdown && (
@@ -306,9 +315,8 @@ export default function Header() {
                         {link.href ? (
                           <Link
                             href={link.href}
-                            className={`font-heading text-lg font-semibold transition-colors flex-1 ${
-                              pathname === link.href ? "text-[#FF971D]" : "text-[#2B2129] hover:text-[#FF971D]"
-                            }`}
+                            className={`font-heading text-lg font-semibold transition-colors flex-1 ${pathname === link.href ? "text-[#FF971D]" : "text-[#2B2129] hover:text-[#FF971D]"
+                              }`}
                             onClick={() => setIsMobileMenuOpen(false)}
                           >
                             {link.name}
@@ -330,9 +338,8 @@ export default function Header() {
                           aria-label={`Toggle ${link.name} menu`}
                         >
                           <ChevronDown
-                            className={`w-5 h-5 transition-transform duration-300 ${
-                              isDropdownOpen ? "rotate-180 text-[#FF971D]" : ""
-                            }`}
+                            className={`w-5 h-5 transition-transform duration-300 ${isDropdownOpen ? "rotate-180 text-[#FF971D]" : ""
+                              }`}
                           />
                         </button>
                       </div>
@@ -350,9 +357,8 @@ export default function Header() {
                       ) : (
                         <Link
                           href={link.href}
-                          className={`font-heading text-lg font-semibold transition-colors py-2.5 border-b border-[#FFE8D6]/60 flex items-center justify-between ${
-                            pathname === link.href ? "text-[#FF971D]" : "text-[#2B2129] hover:text-[#FF971D]"
-                          }`}
+                          className={`font-heading text-lg font-semibold transition-colors py-2.5 border-b border-[#FFE8D6]/60 flex items-center justify-between ${pathname === link.href ? "text-[#FF971D]" : "text-[#2B2129] hover:text-[#FF971D]"
+                            }`}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           <span>{link.name}</span>
@@ -402,9 +408,8 @@ export default function Header() {
                             <Link
                               key={sublink.name}
                               href={sublink.href}
-                              className={`flex items-center gap-3 p-2 rounded-lg hover:bg-[#FFE8D6]/50 transition-colors group ${
-                                pathname === sublink.href ? "bg-[#FFE8D6] text-[#FF971D] font-bold" : ""
-                              }`}
+                              className={`flex items-center gap-3 p-2 rounded-lg hover:bg-[#FFE8D6]/50 transition-colors group ${pathname === sublink.href ? "bg-[#FFE8D6] text-[#FF971D] font-bold" : ""
+                                }`}
                               onClick={() => setIsMobileMenuOpen(false)}
                             >
                               {content}
